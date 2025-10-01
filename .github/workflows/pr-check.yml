@@ -27,7 +27,7 @@ jobs:
       - name: Run tests
         run: echo "Running tests..." # 実際には必要なスクリプトやコマンドを記述
 
-  test: # 3つ目のジョブ
+  lint: # 3つ目のジョブ
     name: Run Linter
     runs-on: ubuntu-latest
     steps:
