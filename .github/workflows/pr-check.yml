@@ -1,0 +1,37 @@
+# ワークフローの名前を定義し、GitHubの「Actions」タブに表示されます。
+name: PR Check
+
+# ワークフローを実行するタイミング（トリガー）を指定します。トリガーは沢山あります。
+on:
+  pull_request: # プルリクエスト作成時に実行
+
+# GitHub Actionsで実行するタスクで、jobsの中には複数のジョブを定義できます。
+# nameに設定したジョブ名が表示されます。
+# １つのジョブの中には実行環境（ランナー）とさらに具体的な作業（ステップ）を記載します。
+jobs:
+  build: # 1つ目のジョブ
+    name: Run Build
+    runs-on: ubuntu-latest # ジョブを実行するための実行環境（ランナー）を指定します。
+    steps: # ステップはジョブの中で実行される最小単位の作業です。stepsではrun-onの部分で指定したOSのコマンドを使用できます。
+      - name: Checkout code
+        uses: actions/checkout@v4 # usesはGitHub Actions内で再利用可能なアクション（他の開発者やGitHubが作成したコード）を指定して利用できます。他にも沢山アクションが用意されています。
+      - name: Run build
+        run: echo "Running build..." # 実際には必要なスクリプトやコマンドを記述
+
+  test: # 2つ目のジョブ
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run tests
+        run: echo "Running tests..." # 実際には必要なスクリプトやコマンドを記述
+
+  test: # 3つ目のジョブ
+    name: Run Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run lint
+        run: echo "Running linter..." # 実際には必要なスクリプトやコマンドを記述
