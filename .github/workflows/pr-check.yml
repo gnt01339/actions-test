@@ -2,8 +2,7 @@
 name: PR Check
 
 # ワークフローを実行するタイミング（トリガー）を指定します。トリガーは沢山あります。
-on:
-  pull_request: # プルリクエスト作成時に実行
+on: [ workflow_dispatch ]
 
 # GitHub Actionsで実行するタスクで、jobsの中には複数のジョブを定義できます。
 # nameに設定したジョブ名が表示されます。
